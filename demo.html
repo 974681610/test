@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <ul>
+            <li v-for="product in products">{{product}}</li>
+        </ul>
+        <div >
+            <span v-bind:title="message">请把鼠标放在此处，等待</span>
+        </div>
+        <div>
+            <span v-if="seen">能看见啊，你好吗</span>
+        </div>
+    </div>
+
+    <div id="app5">
+        <p>{{message}}</p>
+        <button v-on:click="reverMessage">逆转消息</button>
+    </div>
+
+    <div id="app6">
+        <p>{{message}}</p>
+        <input type="text" v-model="message">
+    </div>
+
+    <todo-item>
+
+    </todo-item>
+
+    <script type="text/javascript">
+        var app =new Vue({
+            el:"#app",
+            data:{
+                products:[123,22,33],
+                message:new Date().toLocaleDateString(),
+                seen:false
+            }
+        })
+
+        var app5= new Vue({
+            el:"#app5",
+            data:{
+                message:"hello"
+            },
+            methods:{
+                reverMessage:function () {
+                    this.message="llllll";
+                }
+            }
+        })
+
+        var app6=new Vue({
+            el:"#app6",
+            data:{
+                message:''
+            }
+        })
+
+        Vue.component('todo-item',{
+            template:'<input type="text" value="nihaoaafa">'
+        })
+
+    </script>
+</body>
+</html>
